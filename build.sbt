@@ -1,4 +1,4 @@
-name := "MongoDB oplog tailing with Akks Streams"
+name := "MongoDB Replica Set oplog tailing with Akks Streams"
 
 version := "1.0"
 

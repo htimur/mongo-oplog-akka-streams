@@ -24,10 +24,9 @@ object OplogService {
     private val collection = client.getDatabase(oplogConfig.db).getCollection(oplogConfig.collection)
 
     override def source: Source[Document, NotUsed] = {
-      val query = and(exists("fromMigrate", exists = false), in("op", "i", "d", "u"))
-      val observable = collection.find(query)
-        .cursorType(CursorType.TailableAwait)
-        .noCursorTimeout(true)
+      val observable = collection.find(in("op", "i", "d", "u"))
+                                 .cursorType(CursorType.TailableAwait)
+                                 .noCursorTimeout(true)
 
       Source.fromPublisher(observable)
     }
