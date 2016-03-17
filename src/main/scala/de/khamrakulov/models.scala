@@ -31,4 +31,6 @@ object models {
 
     OplogEntry(ns, oRo2, ts, op)
   }
+
+  case class Shard(name: String, uri: String)
 }

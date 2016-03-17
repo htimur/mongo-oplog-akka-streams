@@ -24,14 +24,11 @@ object configs {
   }
 
   object MongoConfig {
-    def apply(config: Config): MongoConfig = MongoConfig(
-      config.getString("uri"),
-      OplogConfig(config.getString("oplog.db"), config.getString("oplog.collection"))
-    )
+    def apply(config: Config): MongoConfig = MongoConfig(config.getString("uri"))
   }
 
   case class OplogConfig(db: String, collection: String)
 
-  case class MongoConfig(uri: String, oplog: OplogConfig)
+  case class MongoConfig(uri: String)
 
 }
